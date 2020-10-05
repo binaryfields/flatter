@@ -1,4 +1,7 @@
 # TODO
 
 - state management
-
+  - https://flutter.dev/docs/development/data-and-backend/state-mgmt/options
+  - https://blog.codemagic.io/flutter-tutorial-pros-and-cons-of-state-management-approaches/
+- di
+  - https://pub.dev/packages/provider
