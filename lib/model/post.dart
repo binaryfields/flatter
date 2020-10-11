@@ -1,24 +1,31 @@
-class Post {
-  Post({this.userId, this.id, this.title, this.body});
+import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'post.g.dart';
+
+@JsonSerializable()
+class Post extends Equatable {
+  const Post({
+    this.userId,
+    this.id,
+    this.title,
+    this.body,
+  });
 
   final int userId;
   final int id;
   final String title;
   final String body;
 
-  factory Post.fromJson(Map<String, dynamic> json) {
-    return Post(
-      userId: json['userId'],
-      id: json['id'],
-      title: json['title'],
-      body: json['body'],
-    );
-  }
+  factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        'userId': userId,
-        'id': id,
-        'title': title,
-        'body': body,
-      };
+  Map<String, dynamic> toJson() => _$PostToJson(this);
+
+  @override
+  List<Object> get props => [
+        userId,
+        id,
+        title,
+        body,
+      ];
 }

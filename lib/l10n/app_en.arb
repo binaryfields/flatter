@@ -1,0 +1,20 @@
+{
+  "actionLogin": "Login",
+  "actionLogout": "Logout",
+  "actionRefresh": "Refresh",
+  "actionRetry": "Retry",
+  "actionSave": "Save",
+  "appName": "Flatter",
+  "errorGeneric": "Something went wrong. Please try again.",
+  "loginForgotPasswordLabel": "Forgot Password?",
+  "loginPasswordLabel": "Password",
+  "loginPasswordError": "Password must be at least 6 characters.",
+  "loginUsernameLabel": "Email",
+  "loginUsernameError": "Email must be a valid email address.",
+  "postTitle": "Post",
+  "postsTitle": "Flatter",
+  "settingsEmailLabel": "Enable Email?",
+  "settingsNotificationsLabel": "Notifications",
+  "settingsTitle": "Settings",
+  "widgetNoContent": "No content"
+}

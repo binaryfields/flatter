@@ -1,24 +1,21 @@
+import 'package:flatter/util/locale.dart';
 import 'package:flutter/material.dart';
 
 class ActivityIndicator extends StatelessWidget {
-  const ActivityIndicator({
-    Key key,
-    @required this.child,
-    this.busy = false,
-  }) : super(key: key);
+  const ActivityIndicator({Key key, this.busy, this.child}) : super(key: key);
 
-  final Widget child;
   final bool busy;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    if (busy) {
+    if (busy ?? false) {
       return Stack(
         children: [
           child,
           const Opacity(
             opacity: 0.3,
-            child: const ModalBarrier(dismissible: false, color: Colors.grey),
+            child: ModalBarrier(dismissible: false, color: Colors.grey),
           ),
           const Center(child: CircularProgressIndicator()),
         ],
@@ -29,8 +26,8 @@ class ActivityIndicator extends StatelessWidget {
   }
 }
 
-class Error extends StatelessWidget {
-  const Error({this.message, this.onRetry});
+class ErrorPrompt extends StatelessWidget {
+  const ErrorPrompt({this.message, this.onRetry});
 
   final String message;
   final VoidCallback onRetry;
@@ -43,13 +40,16 @@ class Error extends StatelessWidget {
         children: <Widget>[
           Text(
             message,
-            style: Theme.of(context).textTheme.subhead,
+            style: Theme.of(context).textTheme.subtitle1,
           ),
           const SizedBox(height: 8),
           RaisedButton(
             color: Theme.of(context).colorScheme.error,
             onPressed: onRetry,
-            child: const Text('Retry', style: TextStyle(color: Colors.white)),
+            child: Text(
+              context.l10n().actionRetry,
+              style: TextStyle(color: Colors.white),
+            ),
           ),
         ],
       ),
@@ -59,13 +59,13 @@ class Error extends StatelessWidget {
 
 class NoContent extends StatelessWidget {
   const NoContent();
-  
+
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        'No content',
-        style: Theme.of(context).textTheme.display1,
+        context.l10n().widgetNoContent,
+        style: Theme.of(context).textTheme.headline4,
       ),
     );
   }
