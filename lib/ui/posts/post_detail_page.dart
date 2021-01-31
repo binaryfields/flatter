@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'post_detail_content.dart';
 
 class PostDetailPage extends StatelessWidget {
-  const PostDetailPage({this.post});
+  const PostDetailPage({required this.post});
 
   final Post post;
 

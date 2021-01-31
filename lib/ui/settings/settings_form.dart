@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'settings_bloc.dart';
 
 class SettingsForm extends StatelessWidget {
-  SettingsForm({Key key}) : super(key: key);
+  SettingsForm({Key? key}) : super(key: key);
 
   final _formKey = GlobalKey<FormState>();
 
@@ -30,15 +30,14 @@ class SettingsForm extends StatelessWidget {
         title: Text(context.l10n().settingsNotificationsLabel),
         initialValue: state.notifications ?? false,
         secondary: Icon(Icons.notifications),
-        onSaved: (bool value) =>
+        onSaved: (value) =>
             context.read<SettingsBloc>().notificationsChanged(value),
       ),
       CheckboxFormField(
         title: Text(context.l10n().settingsEmailLabel),
         initialValue: state.email ?? false,
         secondary: Icon(Icons.email),
-        onSaved: (bool value) =>
-            context.read<SettingsBloc>().emailChanged(value),
+        onSaved: (value) => context.read<SettingsBloc>().emailChanged(value),
       ),
       RaisedButton(
         child: Text(context.l10n().actionSave),
@@ -48,8 +47,8 @@ class SettingsForm extends StatelessWidget {
   }
 
   void _onSubmit(BuildContext context) {
-    if (_formKey.currentState.validate()) {
-      _formKey.currentState.save();
+    if (_formKey.currentState?.validate() ?? false) {
+      _formKey.currentState?.save();
       context.read<SettingsBloc>().submit();
     }
   }

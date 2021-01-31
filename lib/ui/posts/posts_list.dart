@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 class PostsList extends StatelessWidget {
   const PostsList({
-    Key key,
-    this.posts,
-    this.onItemTap,
+    Key? key,
+    required this.posts,
+    required this.onItemTap,
   }) : super(key: key);
 
   final List<Post> posts;

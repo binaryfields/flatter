@@ -9,21 +9,21 @@ class SettingsState extends Equatable {
   });
 
   final Resource status;
-  final bool email;
-  final bool notifications;
+  final bool? email;
+  final bool? notifications;
 
   final Resource submitOp;
 
   bool get isBusy => submitOp == Resource.loading;
 
   @override
-  List<Object> get props => [status, email, notifications, submitOp];
+  List<Object?> get props => [status, email, notifications, submitOp];
 
   SettingsState copyWith({
-    Resource status,
-    bool email,
-    bool notifications,
-    Resource submitOp,
+    Resource? status,
+    bool? email,
+    bool? notifications,
+    Resource? submitOp,
   }) {
     return SettingsState(
       status: status ?? this.status,

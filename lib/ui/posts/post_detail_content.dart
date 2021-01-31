@@ -2,7 +2,7 @@ import 'package:flatter/model/post.dart';
 import 'package:flutter/material.dart';
 
 class PostItem extends StatelessWidget {
-  const PostItem({this.post});
+  const PostItem({required this.post});
 
   final Post post;
 

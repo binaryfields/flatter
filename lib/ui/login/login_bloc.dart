@@ -17,11 +17,11 @@ class LoginBloc extends Cubit<LoginState> {
     }
   }
 
-  void usernameChanged(String value) {
+  void usernameChanged(String? value) {
     emit(state.copyWith(username: value));
   }
 
-  void passwordChanged(String value) {
+  void passwordChanged(String? value) {
     emit(state.copyWith(password: value));
   }
 }

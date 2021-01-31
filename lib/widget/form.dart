@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class CheckboxFormField extends FormField<bool> {
   CheckboxFormField({
-    Widget title,
-    Widget secondary,
-    FormFieldSetter<bool> onSaved,
-    FormFieldValidator<bool> validator,
+    Widget? title,
+    Widget? secondary,
+    FormFieldSetter<bool>? onSaved,
+    FormFieldValidator<bool>? validator,
     bool initialValue = false,
   }) : super(
           initialValue: initialValue,
@@ -18,7 +18,7 @@ class CheckboxFormField extends FormField<bool> {
               subtitle: state.hasError
                   ? Builder(
                       builder: (context) => Text(
-                        state.errorText,
+                        state.errorText ?? '',
                         style: TextStyle(color: Theme.of(context).errorColor),
                       ),
                     )
@@ -34,10 +34,10 @@ class CheckboxFormField extends FormField<bool> {
 
 class SwitchFormField extends FormField<bool> {
   SwitchFormField({
-    Widget title,
-    Widget secondary,
-    FormFieldSetter<bool> onSaved,
-    FormFieldValidator<bool> validator,
+    Widget? title,
+    Widget? secondary,
+    FormFieldSetter<bool>? onSaved,
+    FormFieldValidator<bool>? validator,
     bool initialValue = false,
   }) : super(
           initialValue: initialValue,
@@ -45,12 +45,12 @@ class SwitchFormField extends FormField<bool> {
           validator: validator,
           builder: (state) {
             return SwitchListTile(
-              value: state.value,
+              value: state.value ?? false,
               title: title,
               subtitle: state.hasError
                   ? Builder(
                       builder: (context) => Text(
-                        state.errorText,
+                        state.errorText ?? '',
                         style: TextStyle(color: Theme.of(context).errorColor),
                       ),
                     )

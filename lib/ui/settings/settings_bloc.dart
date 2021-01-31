@@ -21,11 +21,11 @@ class SettingsBloc extends Cubit<SettingsState> {
     }
   }
 
-  void emailChanged(bool value) {
+  void emailChanged(bool? value) {
     emit(state.copyWith(email: value));
   }
 
-  void notificationsChanged(bool value) {
+  void notificationsChanged(bool? value) {
     emit(state.copyWith(notifications: value));
   }
 }

@@ -7,7 +7,7 @@ import 'package:flatter/util/resource.dart';
 part 'posts_state.dart';
 
 class PostsBloc extends Cubit<PostsState> {
-  PostsBloc({this.postService}) : super(PostsState());
+  PostsBloc({required this.postService}) : super(PostsState());
 
   final PostService postService;
 

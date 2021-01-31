@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flatter/model/post.dart';
 
 class PostService {
-  const PostService({this.dio});
+  const PostService({required this.dio});
 
   final Dio dio;
 

@@ -47,9 +47,9 @@ class PostsPage extends StatelessWidget {
                   default:
                     return RefreshIndicator(
                       onRefresh: () => context.read<PostsBloc>().fetch(),
-                      child: state.posts.isNotEmpty
+                      child: state.posts?.isNotEmpty ?? false
                           ? PostsList(
-                              posts: state.posts,
+                              posts: state.posts!,
                               onItemTap: _onItemTap,
                             )
                           : const NoContent(),

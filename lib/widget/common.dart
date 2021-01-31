@@ -2,14 +2,15 @@ import 'package:flatter/util/locale.dart';
 import 'package:flutter/material.dart';
 
 class ActivityIndicator extends StatelessWidget {
-  const ActivityIndicator({Key key, this.busy, this.child}) : super(key: key);
+  const ActivityIndicator({Key? key, required this.busy, required this.child})
+      : super(key: key);
 
   final bool busy;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    if (busy ?? false) {
+    if (busy) {
       return Stack(
         children: [
           child,
@@ -27,7 +28,7 @@ class ActivityIndicator extends StatelessWidget {
 }
 
 class ErrorPrompt extends StatelessWidget {
-  const ErrorPrompt({this.message, this.onRetry});
+  const ErrorPrompt({required this.message, required this.onRetry});
 
   final String message;
   final VoidCallback onRetry;

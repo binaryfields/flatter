@@ -52,7 +52,7 @@ class LoginForm extends StatelessWidget {
         obscureText: true,
         onSaved: (value) => context.read<LoginBloc>().passwordChanged(value),
         validator: (value) {
-          return value.trim().length < 6
+          return value == null || value.trim().length < 6
               ? context.l10n().loginPasswordError
               : null;
         },
@@ -81,8 +81,8 @@ class LoginForm extends StatelessWidget {
   }
 
   void _onLogin(BuildContext context) {
-    if (_formKey.currentState.validate()) {
-      _formKey.currentState.save();
+    if (_formKey.currentState?.validate() ?? false) {
+      _formKey.currentState?.save();
       context.read<LoginBloc>().login();
     }
   }

@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'dio_provider.dart';
 
 class ServiceModule extends StatelessWidget {
-  const ServiceModule({Key key, this.child}) : super(key: key);
+  const ServiceModule({Key? key, required this.child}) : super(key: key);
 
   final Widget child;
 
