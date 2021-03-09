@@ -1,7 +1,6 @@
 import 'package:flatter/util/locale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:validate/validate.dart';
 
 import 'login_bloc.dart';
 
@@ -39,7 +38,7 @@ class LoginForm extends StatelessWidget {
         onSaved: (value) => context.read<LoginBloc>().usernameChanged(value),
         validator: (value) {
           try {
-            Validate.isEmail(value);
+            // FIXME Validate.isEmail(value);
             return null;
           } catch (e) {
             return context.l10n().loginUsernameError;
