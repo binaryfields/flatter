@@ -3,14 +3,14 @@ part of 'settings_bloc.dart';
 class SettingsState extends Equatable {
   const SettingsState({
     this.status = Resource.initial,
-    this.email,
-    this.notifications,
+    this.email = false,
+    this.notifications = false,
     this.submitOp = Resource.initial,
   });
 
   final Resource status;
-  final bool? email;
-  final bool? notifications;
+  final bool email;
+  final bool notifications;
 
   final Resource submitOp;
 

@@ -28,18 +28,18 @@ class SettingsForm extends StatelessWidget {
     return [
       SwitchFormField(
         title: Text(context.l10n().settingsNotificationsLabel),
-        initialValue: state.notifications ?? false,
+        initialValue: state.notifications,
         secondary: Icon(Icons.notifications),
         onSaved: (value) =>
             context.read<SettingsBloc>().notificationsChanged(value),
       ),
       CheckboxFormField(
         title: Text(context.l10n().settingsEmailLabel),
-        initialValue: state.email ?? false,
+        initialValue: state.email,
         secondary: Icon(Icons.email),
         onSaved: (value) => context.read<SettingsBloc>().emailChanged(value),
       ),
-      RaisedButton(
+      ElevatedButton(
         child: Text(context.l10n().actionSave),
         onPressed: () => _onSubmit(context),
       ),

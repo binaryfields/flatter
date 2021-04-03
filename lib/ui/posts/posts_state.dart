@@ -3,11 +3,11 @@ part of 'posts_bloc.dart';
 class PostsState extends Equatable {
   const PostsState({
     this.status = Resource.initial,
-    this.posts,
+    this.posts = const [],
   });
 
   final Resource status;
-  final List<Post>? posts;
+  final List<Post> posts;
 
   @override
   List<Object?> get props => [status, posts];
