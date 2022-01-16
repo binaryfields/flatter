@@ -10,7 +10,7 @@ class PostsState extends Equatable {
   final List<Post> posts;
 
   @override
-  List<Object?> get props => [status, posts];
+  List<Object> get props => [status, posts];
 
   PostsState copyWith({
     Resource? status,
