@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-flatpak-spawn --host flatpak run com.google.Chrome -enable-features=UseOzonePlatform -ozone-platform=wayland "$@"
+flatpak-spawn --host flatpak run org.chromium.Chromium -enable-features=UseOzonePlatform -ozone-platform=wayland "$@"
