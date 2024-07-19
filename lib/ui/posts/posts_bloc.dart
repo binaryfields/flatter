@@ -1,22 +1,23 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-import 'package:flatter/model/post.dart';
 import 'package:flatter/service/post_service.dart';
 import 'package:flatter/util/resource.dart';
+import 'package:logger/logger.dart';
 
-part 'posts_state.dart';
+import 'posts_state.dart';
 
 class PostsBloc extends Cubit<PostsState> {
-  PostsBloc({required this.postService}) : super(PostsState());
-
+  static final logger = Logger();
   final PostService postService;
+
+  PostsBloc({required this.postService}) : super(const PostsState());
 
   Future<void> fetch() async {
     try {
       emit(state.copyWith(status: Resource.loading));
       final posts = await postService.fetch();
       emit(state.copyWith(status: Resource.success, posts: posts));
-    } on Exception {
+    } catch (e, stackTrace) {
+      logger.e("Failed to fetch posts", error: e, stackTrace: stackTrace);
       emit(state.copyWith(status: Resource.error));
     }
   }

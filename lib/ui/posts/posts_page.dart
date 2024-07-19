@@ -10,8 +10,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'posts_bloc.dart';
 import 'posts_list.dart';
+import 'posts_state.dart';
 
 class PostsPage extends StatelessWidget {
+  const PostsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<PostsBloc>(
@@ -32,7 +35,7 @@ class PostsPage extends StatelessWidget {
                 ),
               ],
             ),
-            drawer: NavDrawer(),
+            drawer: const NavDrawer(),
             body: BlocBuilder<PostsBloc, PostsState>(
               builder: (context, state) {
                 switch (state.status) {

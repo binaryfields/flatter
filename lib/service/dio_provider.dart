@@ -7,8 +7,8 @@ class DioProvider {
     return Dio(
       BaseOptions(
         baseUrl: 'https://jsonplaceholder.typicode.com',
-        connectTimeout: 5000,
-        receiveTimeout: 5000,
+        connectTimeout: const Duration(milliseconds: 5000),
+        receiveTimeout: const Duration(milliseconds: 5000),
         headers: {
           HttpHeaders.userAgentHeader: 'dio',
         },

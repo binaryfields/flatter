@@ -2,9 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flatter/model/post.dart';
 
 class PostService {
-  const PostService({required this.dio});
-
   final Dio dio;
+
+  const PostService({required this.dio});
 
   Future<List<Post>> fetch() async {
     final response = await dio.get(

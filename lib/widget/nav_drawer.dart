@@ -4,13 +4,15 @@ import 'package:flatter/util/locale.dart';
 import 'package:flutter/material.dart';
 
 class NavDrawer extends StatelessWidget {
+  const NavDrawer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
         children: [
           ListTile(title: Text(context.l10n().appName.toUpperCase())),
-          Divider(),
+          const Divider(),
           ListTile(
             title: Text(context.l10n().settingsTitle),
             leading: const Icon(Icons.settings),
@@ -18,7 +20,7 @@ class NavDrawer extends StatelessWidget {
               Navigator.pop(context);
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => SettingsPage()),
+                MaterialPageRoute(builder: (context) => const SettingsPage()),
               );
             },
           ),
@@ -29,7 +31,7 @@ class NavDrawer extends StatelessWidget {
               Navigator.pop(context);
               Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (context) => LoginPage()),
+                MaterialPageRoute(builder: (context) => const LoginPage()),
                 (route) => false,
               );
             },

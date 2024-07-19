@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'settings_state.dart';
 
 class SettingsBloc extends Cubit<SettingsState> {
-  SettingsBloc() : super(SettingsState());
+  SettingsBloc() : super(const SettingsState());
 
   Future<void> init() async {
     emit(state.copyWith(status: Resource.success));
@@ -14,7 +14,7 @@ class SettingsBloc extends Cubit<SettingsState> {
   Future<void> submit() async {
     try {
       emit(state.copyWith(submitOp: Resource.loading));
-      await Future.delayed(Duration(milliseconds: 1000));
+      await Future.delayed(const Duration(milliseconds: 1000));
       emit(state.copyWith(submitOp: Resource.success));
     } on Exception {
       emit(state.copyWith(submitOp: Resource.error));

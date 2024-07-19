@@ -2,8 +2,7 @@ import 'package:flatter/util/locale.dart';
 import 'package:flutter/material.dart';
 
 class ActivityIndicator extends StatelessWidget {
-  const ActivityIndicator({Key? key, required this.busy, required this.child})
-      : super(key: key);
+  const ActivityIndicator({super.key, required this.busy, required this.child});
 
   final bool busy;
   final Widget child;
@@ -28,10 +27,10 @@ class ActivityIndicator extends StatelessWidget {
 }
 
 class ErrorPrompt extends StatelessWidget {
-  const ErrorPrompt({required this.message, required this.onRetry});
-
   final String message;
   final VoidCallback onRetry;
+
+  const ErrorPrompt({super.key, required this.message, required this.onRetry});
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +40,17 @@ class ErrorPrompt extends StatelessWidget {
         children: <Widget>[
           Text(
             message,
-            style: Theme.of(context).textTheme.subtitle1,
+            style: Theme.of(context).textTheme.titleMedium,
           ),
           const SizedBox(height: 8),
-          RaisedButton(
-            color: Theme.of(context).colorScheme.error,
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              foregroundColor: Theme.of(context).colorScheme.error,
+            ),
             onPressed: onRetry,
             child: Text(
               context.l10n().actionRetry,
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
           ),
         ],
@@ -59,14 +60,14 @@ class ErrorPrompt extends StatelessWidget {
 }
 
 class NoContent extends StatelessWidget {
-  const NoContent();
+  const NoContent({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Text(
         context.l10n().widgetNoContent,
-        style: Theme.of(context).textTheme.headline4,
+        style: Theme.of(context).textTheme.headlineMedium,
       ),
     );
   }

@@ -1,15 +1,16 @@
-part of 'login_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flatter/util/resource.dart';
 
 class LoginState extends Equatable {
+  final String? username;
+  final String? password;
+  final Resource? loginOp;
+
   const LoginState({
     this.username,
     this.password,
     this.loginOp,
   });
-
-  final String? username;
-  final String? password;
-  final Resource? loginOp;
 
   bool get isBusy => loginOp == Resource.loading;
 

@@ -1,13 +1,15 @@
-part of 'posts_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flatter/model/post.dart';
+import 'package:flatter/util/resource.dart';
 
 class PostsState extends Equatable {
+  final Resource status;
+  final List<Post> posts;
+
   const PostsState({
     this.status = Resource.initial,
     this.posts = const [],
   });
-
-  final Resource status;
-  final List<Post> posts;
 
   @override
   List<Object> get props => [status, posts];

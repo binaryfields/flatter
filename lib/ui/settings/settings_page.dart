@@ -9,6 +9,8 @@ import 'settings_bloc.dart';
 import 'settings_form.dart';
 
 class SettingsPage extends StatelessWidget {
+  const SettingsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<SettingsBloc>(

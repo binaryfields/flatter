@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'settings_bloc.dart';
 
 class SettingsForm extends StatelessWidget {
-  SettingsForm({Key? key}) : super(key: key);
+  SettingsForm({super.key});
 
   final _formKey = GlobalKey<FormState>();
 
@@ -29,14 +29,14 @@ class SettingsForm extends StatelessWidget {
       SwitchFormField(
         title: Text(context.l10n().settingsNotificationsLabel),
         initialValue: state.notifications,
-        secondary: Icon(Icons.notifications),
+        secondary: const Icon(Icons.notifications),
         onSaved: (value) =>
             context.read<SettingsBloc>().notificationsChanged(value),
       ),
       CheckboxFormField(
         title: Text(context.l10n().settingsEmailLabel),
         initialValue: state.email,
-        secondary: Icon(Icons.email),
+        secondary: const Icon(Icons.email),
         onSaved: (value) => context.read<SettingsBloc>().emailChanged(value),
       ),
       ElevatedButton(

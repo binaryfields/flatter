@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'login_bloc.dart';
+import 'login_state.dart';
 
 class LoginForm extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
+
+  LoginForm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,7 @@ class LoginForm extends StatelessWidget {
     return [
       Container(
         height: 200,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.fitWidth,
             image: NetworkImage(
@@ -57,11 +60,12 @@ class LoginForm extends StatelessWidget {
         },
       ),
       const SizedBox(height: 24),
-      RaisedButton(
-        color: Theme.of(context).accentColor,
-        padding: const EdgeInsets.all(12.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24.0),
+      ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          foregroundColor: Theme.of(context).colorScheme.tertiary,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(24.0),
+          ),
         ),
         onPressed: () => _onLogin(context),
         child: Text(

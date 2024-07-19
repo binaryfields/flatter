@@ -8,8 +8,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'login_bloc.dart';
 import 'login_form.dart';
+import 'login_state.dart';
 
 class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<LoginBloc>(
@@ -25,7 +28,8 @@ class LoginPage extends StatelessWidget {
                   if (state.loginOp == Resource.success) {
                     Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(builder: (context) => PostsPage()),
+                      MaterialPageRoute(
+                          builder: (context) => const PostsPage()),
                       (route) => false,
                     );
                   } else if (state.loginOp == Resource.error) {
@@ -37,7 +41,7 @@ class LoginPage extends StatelessWidget {
                     busy: state.isBusy,
                     child: SingleChildScrollView(
                       child: Padding(
-                        padding: EdgeInsets.all(16),
+                        padding: const EdgeInsets.all(16),
                         child: LoginForm(),
                       ),
                     ),
