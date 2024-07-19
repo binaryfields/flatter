@@ -16,8 +16,8 @@ class PostsBloc extends Cubit<PostsState> {
       emit(state.copyWith(status: Resource.loading));
       final posts = await postService.fetch();
       emit(state.copyWith(status: Resource.success, posts: posts));
-    } catch (e, stackTrace) {
-      logger.e("Failed to fetch posts", error: e, stackTrace: stackTrace);
+    } catch (e, st) {
+      logger.e("Failed to fetch posts", error: e, stackTrace: st);
       emit(state.copyWith(status: Resource.error));
     }
   }

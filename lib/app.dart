@@ -1,5 +1,6 @@
-import 'package:flatter/service/service_module.dart';
 import 'package:flatter/ui/posts/posts_page.dart';
+import 'package:flatter/util/scroll_behavior.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -10,14 +11,14 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ServiceModule(
-      child: MaterialApp(
-        title: 'Flatter',
-        theme: theme,
-        home: const PostsPage(),
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-      ),
+    return MaterialApp(
+      title: 'Flatter',
+      theme: theme,
+      home: const PostsPage(),
+      debugShowCheckedModeBanner: false,
+      scrollBehavior: kIsWeb ? WebScrollBehavior() : null,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
     );
   }
 }

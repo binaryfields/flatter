@@ -1,6 +1,7 @@
 import 'package:flatter/model/post.dart';
 import 'package:flatter/service/post_service.dart';
 import 'package:flatter/ui/posts/post_detail_page.dart';
+import 'package:flatter/util/di.dart';
 import 'package:flatter/util/locale.dart';
 import 'package:flatter/util/resource.dart';
 import 'package:flatter/widget/common.dart';
@@ -19,7 +20,7 @@ class PostsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<PostsBloc>(
       create: (_) => PostsBloc(
-        postService: context.read<PostService>(),
+        postService: DI<PostService>(),
       )..fetch(),
       child: Builder(
         builder: (context) {
