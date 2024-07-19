@@ -1,6 +1,5 @@
 import 'package:flatter/model/post.dart';
 import 'package:flatter/service/post_service.dart';
-import 'package:flatter/ui/posts/post_detail_page.dart';
 import 'package:flatter/util/di.dart';
 import 'package:flatter/util/locale.dart';
 import 'package:flatter/util/resource.dart';
@@ -8,6 +7,7 @@ import 'package:flatter/widget/common.dart';
 import 'package:flatter/widget/nav_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import 'posts_bloc.dart';
 import 'posts_list.dart';
@@ -67,10 +67,7 @@ class PostsPage extends StatelessWidget {
     );
   }
 
-  void _onItemTap(BuildContext context, Post item) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => PostDetailPage(post: item)),
-    );
+  void _onItemTap(BuildContext context, Post post) {
+    context.push('/posts/${post.id}', extra: post);
   }
 }

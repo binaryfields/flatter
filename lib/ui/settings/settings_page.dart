@@ -4,6 +4,7 @@ import 'package:flatter/util/resource.dart';
 import 'package:flatter/widget/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import 'settings_bloc.dart';
 import 'settings_form.dart';
@@ -34,7 +35,7 @@ class SettingsPage extends StatelessWidget {
                     previous.submitOp != current.submitOp,
                 listener: (context, state) {
                   if (state.submitOp == Resource.success) {
-                    Navigator.of(context).pop();
+                    context.pop();
                   } else if (state.submitOp == Resource.error) {
                     showError(context, context.l10n().errorGeneric);
                   }
