@@ -3,23 +3,17 @@ import 'package:flatter/model/post.dart';
 import 'package:flatter/util/resource.dart';
 
 class PostsState extends Equatable {
-  final Resource status;
-  final List<Post> posts;
+  final Resource<List<Post>> posts;
 
-  const PostsState({
-    this.status = Resource.initial,
-    this.posts = const [],
-  });
+  const PostsState({this.posts = const Idle()});
 
   @override
-  List<Object> get props => [status, posts];
+  List<Object> get props => [posts];
 
   PostsState copyWith({
-    Resource? status,
-    List<Post>? posts,
+    Resource<List<Post>>? posts,
   }) {
     return PostsState(
-      status: status ?? this.status,
       posts: posts ?? this.posts,
     );
   }

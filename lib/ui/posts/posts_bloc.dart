@@ -13,12 +13,12 @@ class PostsBloc extends Cubit<PostsState> {
 
   Future<void> fetch() async {
     try {
-      emit(state.copyWith(status: Resource.loading));
+      emit(state.copyWith(posts: const Loading()));
       final posts = await postService.fetch();
-      emit(state.copyWith(status: Resource.success, posts: posts));
+      emit(state.copyWith(posts: Success(posts)));
     } catch (e, st) {
       logger.e("Failed to fetch posts", error: e, stackTrace: st);
-      emit(state.copyWith(status: Resource.error));
+      emit(state.copyWith(posts: Failure(e.toString())));
     }
   }
 }

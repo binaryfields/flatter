@@ -25,11 +25,12 @@ class LoginPage extends StatelessWidget {
                 listenWhen: (previous, current) =>
                     previous.loginOp != current.loginOp,
                 listener: (context, state) {
-                  if (state.loginOp == Resource.success) {
-                    context.go('/posts');
-                  } else if (state.loginOp == Resource.error) {
-                    showError(context, context.l10n().errorGeneric);
-                  }
+                  final _ = switch (state.loginOp) {
+                    Success _ => context.go('/posts'),
+                    Failure _ =>
+                      showError(context, context.l10n().errorGeneric),
+                    _ => (),
+                  };
                 },
                 builder: (context, state) {
                   return ActivityIndicator(

@@ -1,32 +1,28 @@
-part of 'settings_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flatter/util/resource.dart';
 
 class SettingsState extends Equatable {
   const SettingsState({
-    this.status = Resource.initial,
     this.email = false,
     this.notifications = false,
-    this.submitOp = Resource.initial,
+    this.submitOp = const Resource.idle(),
   });
 
-  final Resource status;
   final bool email;
   final bool notifications;
+  final Resource<void> submitOp;
 
-  final Resource submitOp;
-
-  bool get isBusy => submitOp == Resource.loading;
+  bool get isBusy => submitOp is Loading;
 
   @override
-  List<Object?> get props => [status, email, notifications, submitOp];
+  List<Object?> get props => [email, notifications, submitOp];
 
   SettingsState copyWith({
-    Resource? status,
     bool? email,
     bool? notifications,
     Resource? submitOp,
   }) {
     return SettingsState(
-      status: status ?? this.status,
       email: email ?? this.email,
       notifications: notifications ?? this.notifications,
       submitOp: submitOp ?? this.submitOp,

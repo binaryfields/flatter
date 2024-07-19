@@ -8,11 +8,11 @@ class LoginBloc extends Cubit<LoginState> {
 
   Future<void> login() async {
     try {
-      emit(state.copyWith(loginOp: Resource.loading));
+      emit(state.copyWith(loginOp: const Resource.loading()));
       await Future.delayed(const Duration(milliseconds: 1000));
-      emit(state.copyWith(loginOp: Resource.success));
-    } on Exception {
-      emit(state.copyWith(loginOp: Resource.error));
+      emit(state.copyWith(loginOp: const Resource.success(null)));
+    } catch (e) {
+      emit(state.copyWith(loginOp: Resource.failure(e.toString())));
     }
   }
 

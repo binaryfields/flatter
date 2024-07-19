@@ -39,26 +39,22 @@ class PostsPage extends StatelessWidget {
             drawer: const NavDrawer(),
             body: BlocBuilder<PostsBloc, PostsState>(
               builder: (context, state) {
-                switch (state.status) {
-                  case Resource.initial:
-                  case Resource.loading:
-                    return const Center(child: CircularProgressIndicator());
-                  case Resource.error:
-                    return ErrorPrompt(
-                      message: context.l10n().errorGeneric,
-                      onRetry: () => context.read<PostsBloc>().fetch(),
-                    );
-                  default:
-                    return RefreshIndicator(
+                return switch (state.posts) {
+                  Success(data: final posts) => RefreshIndicator(
                       onRefresh: () => context.read<PostsBloc>().fetch(),
-                      child: state.posts.isNotEmpty
+                      child: posts.isNotEmpty
                           ? PostsList(
-                              posts: state.posts,
+                              posts: posts,
                               onItemTap: _onItemTap,
                             )
                           : const NoContent(),
-                    );
-                }
+                    ),
+                  Failure _ => ErrorPrompt(
+                      message: context.l10n().errorGeneric,
+                      onRetry: () => context.read<PostsBloc>().fetch(),
+                    ),
+                  _ => const Center(child: CircularProgressIndicator()),
+                };
               },
             ),
           );

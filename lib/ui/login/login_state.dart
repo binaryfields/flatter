@@ -4,15 +4,15 @@ import 'package:flatter/util/resource.dart';
 class LoginState extends Equatable {
   final String? username;
   final String? password;
-  final Resource? loginOp;
+  final Resource<void> loginOp;
 
   const LoginState({
     this.username,
     this.password,
-    this.loginOp,
+    this.loginOp = const Resource.idle(),
   });
 
-  bool get isBusy => loginOp == Resource.loading;
+  bool get isBusy => loginOp is Loading;
 
   @override
   List<Object?> get props => [username, password, loginOp];

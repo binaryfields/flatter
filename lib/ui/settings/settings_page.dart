@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 
 import 'settings_bloc.dart';
 import 'settings_form.dart';
+import 'settings_state.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -34,33 +35,22 @@ class SettingsPage extends StatelessWidget {
                 listenWhen: (previous, current) =>
                     previous.submitOp != current.submitOp,
                 listener: (context, state) {
-                  if (state.submitOp == Resource.success) {
-                    context.pop();
-                  } else if (state.submitOp == Resource.error) {
-                    showError(context, context.l10n().errorGeneric);
-                  }
+                  final _ = switch (state.submitOp) {
+                    Success _ => context.pop(),
+                    Failure _ =>
+                      showError(context, context.l10n().errorGeneric),
+                    _ => (),
+                  };
                 },
                 buildWhen: (previous, current) =>
-                    previous.status != current.status ||
                     previous.isBusy != current.isBusy,
                 builder: (context, state) {
-                  switch (state.status) {
-                    case Resource.initial:
-                    case Resource.loading:
-                      return const Center(child: CircularProgressIndicator());
-                    case Resource.error:
-                      return ErrorPrompt(
-                        message: context.l10n().errorGeneric,
-                        onRetry: () => context.read<SettingsBloc>().init(),
-                      );
-                    default:
-                      return ActivityIndicator(
-                        busy: state.isBusy,
-                        child: SingleChildScrollView(
-                          child: SettingsForm(),
-                        ),
-                      );
-                  }
+                  return ActivityIndicator(
+                    busy: state.isBusy,
+                    child: SingleChildScrollView(
+                      child: SettingsForm(),
+                    ),
+                  );
                 },
               ),
             );
