@@ -15,12 +15,18 @@ class NavDrawer extends StatelessWidget {
           ListTile(
             title: Text(context.l10n().settingsTitle),
             leading: const Icon(Icons.settings),
-            onTap: () => context.push('/settings'),
+            onTap: () {
+              context.pop();
+              context.push('/settings');
+            },
           ),
           ListTile(
             title: Text(context.l10n().actionLogout),
             leading: const Icon(Icons.account_circle),
-            onTap: () => context.go('/'),
+            onTap: () {
+              context.pop();
+              context.go('/');
+            },
           ),
         ],
       ),
